@@ -38,7 +38,7 @@ const Assignees = () => {
     return (
       <ul className="flex flex-col gap-2 ">
         {assigneesLimitData.map((a, index) => {
-          const { id, name, profilePic } = a;
+          const { id, name } = a;
           return renderAssignee(id, name);
         })}
       </ul>

@@ -11,6 +11,10 @@ export const UserContextProvider = ({ children }) => {
   const [activeTab, setActiveTab] = useState(LEAD_TABS["lead-details"]);
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const fetchData = () => {
     setIsLoading(true);
     setTimeout(() => {
@@ -18,10 +22,6 @@ export const UserContextProvider = ({ children }) => {
       setIsLoading(false);
     }, 1000);
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   if (isLoading) {
     return (

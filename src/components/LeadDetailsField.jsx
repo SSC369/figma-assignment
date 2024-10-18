@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Field from "./Field";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp } from "../Icons";
+
+import Gof from "./Gof";
 
 const LeadDetailsField = ({ gof }) => {
   const [showMore, setShowMore] = useState(false);
@@ -14,6 +15,28 @@ const LeadDetailsField = ({ gof }) => {
     setShowMore(false);
   };
 
+  const renderGof = (gof) => {
+    if (gof.fields.length === 0) {
+      return <p className="">-</p>;
+    }
+
+    return (
+      <ul className="flex gap-10 flex-wrap ">
+        {gof.fields.map((field) => {
+          const { name, value, fieldType, fieldId } = field;
+          return (
+            <Gof
+              name={name}
+              value={value}
+              key={fieldId}
+              fieldType={fieldType}
+            />
+          );
+        })}
+      </ul>
+    );
+  };
+
   const renderGofs = (gof) => {
     return (
       <div
@@ -23,24 +46,7 @@ const LeadDetailsField = ({ gof }) => {
             : "max-h-0 opacity-0"
         }`}
       >
-        {gof.fields.length === 0 ? (
-          <p className="">-</p>
-        ) : (
-          <ul className="flex gap-10 flex-wrap ">
-            {gof.fields.map((field) => {
-              const { name, value, fieldType, fieldId } = field;
-              return (
-                <li
-                  className="text-sm flex flex-col gap-2 min-w-[200px] h-fit border-r-[1px] last:border-0 pr-6"
-                  key={fieldId}
-                >
-                  <p className="text-slate-600 text-xs">{name}</p>
-                  <Field fieldType={fieldType} value={value} />
-                </li>
-              );
-            })}
-          </ul>
-        )}
+        {renderGof(gof)}
       </div>
     );
   };
@@ -52,13 +58,12 @@ const LeadDetailsField = ({ gof }) => {
           <FaChevronUp />
         </button>
       );
-    } else {
-      return (
-        <button onClick={handleShow}>
-          <FaChevronDown />
-        </button>
-      );
     }
+    return (
+      <button onClick={handleShow}>
+        <FaChevronDown />
+      </button>
+    );
   };
 
   const handleToggle = (e) => {
