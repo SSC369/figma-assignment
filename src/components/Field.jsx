@@ -22,21 +22,39 @@ const Field = ({ value, fieldType }) => {
     );
   };
 
+  const renderCheckboxGroup = (checkboxes) => {
+    return (
+      <ul className="flex flex-wrap gap-2 items-center max-w-[300px]">
+        {checkboxes.map((value) => {
+          return (
+            <li key={v4()} className="flex items-center gap-2 font-medium">
+              <p>{value}</p>
+              <input type="checkbox" />
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
+
   const renderFieldValue = () => {
     switch (fieldType) {
       case "DATE":
         return <p>{dayjs(new Date(value)).format("DD MMM YYYY")}</p>;
       case "CHECKBOX_GROUP":
-        const checkboxText = value.join(", ");
-        return <p className="font-medium">{checkboxText}</p>;
+        if (typeof value === "object") {
+          return renderCheckboxGroup(value);
+        }
+        return (
+          <div>
+            <input defaultChecked={value} type="checkbox" />
+          </div>
+        );
+
       case "MULTI_SELECT":
         return renderMultiSelect(value);
       case "LONG_TEXT":
-        return (
-          <p className="whitespace-nowrap  font-medium text-ellipsis max-w-[200px] overflow-hidden">
-            {value}
-          </p>
-        );
+        return <p className=" max-w-[200px] text-wrap">{value}</p>;
       case "PHONE_NUMBER":
         const { phoneNumber, countryCode } = value;
         return (
@@ -50,11 +68,11 @@ const Field = ({ value, fieldType }) => {
       case "URL":
         return <p className="font-medium text-blue-500"></p>;
       default:
-        return <p className="font-medium">{value}</p>;
+        return <p className="font-medium break-words">{value}</p>;
     }
   };
 
-  return <div>{renderFieldValue()}</div>;
+  return <div className="text-slate-700">{renderFieldValue()}</div>;
 };
 
 export default Field;

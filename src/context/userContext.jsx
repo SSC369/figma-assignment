@@ -7,7 +7,7 @@ import { LEAD_TABS } from "../constants";
 export const UserContext = createContext();
 
 export const UserContextProvider = ({ children }) => {
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState(null);
   const [activeTab, setActiveTab] = useState(LEAD_TABS["lead-details"]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -15,16 +15,23 @@ export const UserContextProvider = ({ children }) => {
     setIsLoading(true);
     setTimeout(() => {
       setUserData(data);
-    }, 3000);
-
-    setIsLoading(false);
+      setIsLoading(false);
+    }, 1000);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  if (!isLoading && userData.name) {
+  if (isLoading) {
+    return (
+      <div className="min-h-dvh flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (!isLoading && userData) {
     const { leadId, name, stage, assignees, overviewFields } = userData;
     const headerData = {
       leadId,
@@ -46,11 +53,11 @@ export const UserContextProvider = ({ children }) => {
         {children}
       </UserContext.Provider>
     );
-  } else {
-    return (
-      <div className="min-h-dvh flex items-center justify-center">
-        <Loader />
-      </div>
-    );
   }
+
+  return (
+    <div>
+      <h1>Something Went Wrong !!!</h1>
+    </div>
+  );
 };

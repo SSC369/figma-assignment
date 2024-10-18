@@ -25,7 +25,7 @@ const App = () => {
       <UserContextProvider>
         <Header />
         <main className="flex px-20 bg-slate-100 min-h-dvh pt-[129px]">
-          <section className="border-r-[1px] w-1/3 p-3 flex flex-col gap-4">
+          <section className="border-r-[1px] w-1/3 p-3 flex flex-col gap-4 max-h-[80dvh] overflow-auto custom-scrollbar">
             <div className="flex items-center gap-1 bg-white p-3 rounded-2xl text-slate-600">
               <TbPinned className="text-lg" />
               <p className="flex-grow text-sm font-medium">Pinned</p>

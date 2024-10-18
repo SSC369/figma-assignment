@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Field from "./Field";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const LeadDetailsField = ({ gof }) => {
@@ -12,19 +13,55 @@ const LeadDetailsField = ({ gof }) => {
   const handleHide = () => {
     setShowMore(false);
   };
+
+  const renderGofs = (gof) => {
+    return (
+      <div
+        className={`transition-all duration-300 ease-in-out overflow-hidden ${
+          showMore
+            ? "max-h-[400px] opacity-100 pt-6 pb-3 px-6"
+            : "max-h-0 opacity-0"
+        }`}
+      >
+        {gof.fields.length === 0 ? (
+          <p className="">-</p>
+        ) : (
+          <ul className="flex gap-10 flex-wrap">
+            {gof.fields.map((field) => {
+              const { name, value, fieldType, fieldId } = field;
+              return (
+                <li
+                  className="text-sm flex flex-col gap-2 min-w-[200px] h-fit border-r-[1px] pr-6"
+                  key={fieldId}
+                >
+                  <p className="text-slate-600 text-xs">{name}</p>
+                  <Field fieldType={fieldType} value={value} />
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
+    );
+  };
+
   return (
-    <div className="mt-4 flex items-center justify-between bg-white p-4 rounded-xl relative">
-      <div className="h-6 w-[4px] rounded-r-lg bg-blue-600 absolute left-0"></div>
-      <h1 className="text-slate-800 text-sm font-medium">{name}</h1>
-      {showMore ? (
-        <button onClick={handleHide}>
-          <FaChevronUp />
-        </button>
-      ) : (
-        <button onClick={handleShow}>
-          <FaChevronDown />
-        </button>
-      )}
+    <div className="mt-4 flex flex-col justify-between bg-white py-4 pr-4 rounded-xl">
+      <div className="flex items-center justify-between relative w-full">
+        <div className="h-6 w-[3px] rounded-r-lg bg-blue-600 absolute left-0"></div>
+        <h1 className="text-slate-800 text-sm font-medium ml-4">{name}</h1>
+        {showMore ? (
+          <button onClick={handleHide}>
+            <FaChevronUp />
+          </button>
+        ) : (
+          <button onClick={handleShow}>
+            <FaChevronDown />
+          </button>
+        )}
+      </div>
+
+      {renderGofs(gof)}
     </div>
   );
 };

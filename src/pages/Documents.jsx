@@ -7,6 +7,9 @@ const Documents = () => {
         <h1 className="w-[120px] text-slate-600 font-medium">Documents</h1>
         <hr size="2" className="text-slate-600 w-full" />
       </div>
+      <h1 className="text-3xl text-center font-semibold text-slate-600 mt-20">
+        No data
+      </h1>
     </div>
   );
 };

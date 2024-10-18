@@ -15,12 +15,10 @@ import { HEADER_OPTIONS } from "../constants";
 
 const Header = () => {
   const { headerData, fetchData } = useContext(UserContext);
-
   const { name, leadId, stage } = headerData;
 
   let logo = "";
   const splitName = name.split(" ");
-
   splitName.forEach((word) => {
     logo += word[0];
   });
