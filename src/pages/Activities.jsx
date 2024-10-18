@@ -9,7 +9,7 @@ const Activities = () => {
       </div>
 
       <h1 className="text-3xl text-center font-semibold text-slate-600 mt-20">
-        No data
+        Coming soon
       </h1>
     </div>
   );

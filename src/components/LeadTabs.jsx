@@ -93,7 +93,7 @@ const LeadTabs = () => {
     return (
       <li
         onClick={() => handleTabClick(data)}
-        className={`flex cursor-pointer items-center gap-2  pb-2 h-[40px] ${
+        className={`flex cursor-pointer justify-center items-center gap-2 min-w-[140px] pb-2 h-[40px] ${
           activeTab === data && "border-b-2 border-solid border-sky"
         }`}
         key={v4()}
@@ -111,7 +111,7 @@ const LeadTabs = () => {
   };
 
   return (
-    <ul className="sticky top-[129px] z-50  gap-10 pt-2 bg-slate-100 flex items-center justify-between px-4 border-b-[1px] overflow-auto custom-scrollbar">
+    <ul className="sticky top-[129px] z-50   pt-2 bg-slate-100 flex items-center  px-4 border-b-[1px] overflow-auto custom-scrollbar">
       {leadTabs.map((data) => {
         const tab = getTab(data);
         return renderTab(data, tab);

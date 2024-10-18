@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "../Icons";
 
 import Gof from "./Gof";
+import { v4 } from "uuid";
 
 const LeadDetailsField = ({ gof }) => {
   const [showMore, setShowMore] = useState(false);
@@ -21,16 +22,11 @@ const LeadDetailsField = ({ gof }) => {
     }
 
     return (
-      <ul className="flex gap-10 flex-wrap ">
+      <ul className="flex gap-10 flex-wrap">
         {gof.fields.map((field) => {
           const { name, value, fieldType, fieldId } = field;
           return (
-            <Gof
-              name={name}
-              value={value}
-              key={fieldId}
-              fieldType={fieldType}
-            />
+            <Gof name={name} value={value} key={v4()} fieldType={fieldType} />
           );
         })}
       </ul>

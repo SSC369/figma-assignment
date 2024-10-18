@@ -46,10 +46,15 @@ const Header = () => {
         <h1 className="font-semibold text-xl">{name}</h1>
         <div
           className="flex items-center gap-1 p-1 rounded-xl px-2 text-white"
-          style={{ backgroundColor: `${stageColor}` }}
+          style={{ backgroundColor: `${stage.bgColor}` }}
         >
-          <p className=" text-xs">{stage.name}</p>
-          <FaChevronDown className="text-xs ml-1" />
+          <p style={{ color: stage.color }} className="text-xs font-medium">
+            {stage.name}
+          </p>
+          <FaChevronDown
+            style={{ color: stage.color }}
+            className="text-xs ml-1"
+          />
         </div>
       </div>
     );
