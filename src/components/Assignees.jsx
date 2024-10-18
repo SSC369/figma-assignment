@@ -101,7 +101,7 @@ const Assignees = () => {
   };
 
   return (
-    <div className="flex flex-col gap-2 bg-white p-3 rounded-2xl text-slate-600">
+    <div className="flex flex-col gap-4 bg-white p-4 rounded-2xl text-slate-600">
       {renderAssigneesHeader()}
       {renderAssignees()}
       {renderSeeMoreButton()}

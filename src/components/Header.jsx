@@ -39,13 +39,13 @@ const Header = () => {
 
   const renderProfile = () => {
     return (
-      <div className="flex items-center gap-3">
-        <div className="rounded-full p-2 font-semibold bg-sky text-sky">
+      <div className="flex items-center">
+        <div className="rounded-full p-4 font-semibold bg-sky text-2xl text-sky">
           {logo}
         </div>
-        <h1 className="font-semibold text-xl">{name}</h1>
+        <h1 className="font-semibold text-2xl ml-4 mr-6">{name}</h1>
         <div
-          className="flex items-center gap-1 p-1 rounded-xl px-2 text-white"
+          className="flex items-center gap-1 rounded-2xl px-2 text-white py-2 pl-2 pr-[6px]"
           style={{ backgroundColor: `${stage.bgColor}` }}
         >
           <p style={{ color: stage.color }} className="text-xs font-medium">
@@ -70,13 +70,13 @@ const Header = () => {
 
   const renderHeader = () => {
     return (
-      <div className="flex items-center w-full justify-between">
-        <div className="flex items-center gap-2">
+      <div className="flex items-center w-full justify-between mb-4">
+        <div className="flex items-center gap-3">
           <FaRocket color="#0086C9" className=" text-xl" />
           <p className="flex-grow-1 text-sm font-medium">Academy CGA</p>
         </div>
 
-        <div className="flex items-center gap-5 text-lg absolute right-6 top-4">
+        <div className="flex items-center gap-5 text-xl absolute right-6 top-4">
           <button onClick={handleRefresh}>
             <FiRefreshCw />
           </button>
@@ -90,7 +90,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed w-full bg-white z-50 px-20 py-4 border-b-[1px]">
+    <header className="fixed w-full bg-white z-50 px-40 py-6 border-b-[1px]">
       {renderHeader()}
       <div className="mt-3 flex items-center justify-between">
         {renderProfile()}

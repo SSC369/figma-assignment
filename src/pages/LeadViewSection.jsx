@@ -12,7 +12,7 @@ import HistoryLog from "./HistoryLog";
 
 const LeadViewSection = () => {
   return (
-    <section className="w-2/3 relative">
+    <section className="relative p-6 w-[794px]">
       <LeadTabs />
       <Routes>
         <Route path="/" element={<LeadDetails />} />

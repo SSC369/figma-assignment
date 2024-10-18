@@ -132,24 +132,6 @@ export default {
           value: "123 Main St, Anytown, USA",
           fieldType: "LONG_TEXT",
         },
-        {
-          fieldId: "F002",
-          name: "Secondary Email",
-          value: "john.d@personal.com",
-          fieldType: "EMAIL",
-        },
-        {
-          fieldId: "F001",
-          name: "Address",
-          value: "123 Main St, Anytown, USA",
-          fieldType: "LONG_TEXT",
-        },
-        {
-          fieldId: "F002",
-          name: "Secondary Email",
-          value: "john.d@personal.com",
-          fieldType: "EMAIL",
-        },
       ],
     },
     {

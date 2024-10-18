@@ -20,15 +20,15 @@ const Overview = () => {
 
   const renderOverviewFields = () => {
     return (
-      <ul className="flex flex-col gap-2 ">
+      <ul className="flex flex-col gap-4 ">
         {overviewLimitData.map((field) => {
           const { name, value, fieldType } = field;
           return (
             <li
-              className="flex items-center text-xs border-b-[1px] last:border-none text-slate-800 py-2"
+              className="flex items-center text-sm border-b-[1px] last:border-none text-slate-800 pb-4"
               key={v4()}
             >
-              <p className="flex-grow text-slate-600 min-w-[100px]">{name}</p>
+              <p className="flex-grow  text-slate-600 min-w-[100px]">{name}</p>
               <Field value={value} fieldType={fieldType} />
             </li>
           );
@@ -50,7 +50,7 @@ const Overview = () => {
       return (
         <button
           onClick={handleClickSeeMore}
-          className="flex items-center gap-1 text-xs self-center"
+          className="flex items-center gap-1 mt-4 text-xs self-center"
         >
           <p className="text-sky font-semibold">See more</p>
           <FaChevronDown />
@@ -64,7 +64,7 @@ const Overview = () => {
       return (
         <button
           onClick={handleClickSeeLess}
-          className="flex items-center gap-1 text-xs self-center"
+          className="flex items-center gap-1 mt-4 text-xs self-center"
         >
           <p className="text-sky font-semibold">See Less</p>
           <FaChevronUp />
@@ -74,7 +74,7 @@ const Overview = () => {
   };
 
   return (
-    <div className="flex flex-col gap-2 bg-white p-3 rounded-2xl text-slate-600">
+    <div className="flex flex-col gap-2 bg-white p-4 rounded-2xl text-slate-600">
       <h1 className="text-sm font-medium">Overview</h1>
       {renderOverviewFields()}
       {renderSeeMoreButton()}

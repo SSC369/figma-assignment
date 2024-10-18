@@ -30,7 +30,7 @@ const HeaderOption = ({ option }) => {
     <li
       onClick={handleClick}
       style={{ backgroundColor: option.bgColor }}
-      className="flex items-center gap-2 p-2 px-4 rounded-xl"
+      className="flex items-center gap-2 py-2  px-4 rounded-xl"
     >
       {renderIcon(option)}
       <p

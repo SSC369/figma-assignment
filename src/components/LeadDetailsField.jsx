@@ -22,7 +22,7 @@ const LeadDetailsField = ({ gof }) => {
     }
 
     return (
-      <ul className="flex gap-10 flex-wrap">
+      <ul className="flex gap-6 flex-wrap">
         {gof.fields.map((field) => {
           const { name, value, fieldType, fieldId } = field;
           return (
@@ -68,7 +68,7 @@ const LeadDetailsField = ({ gof }) => {
   };
 
   return (
-    <div className="mt-4 flex flex-col justify-between bg-white py-4 pr-4 rounded-xl">
+    <div className="mt-4 flex flex-col justify-between bg-white py-4 pr-4 rounded-2xl min-h-[54px] mr-4">
       <div
         onClick={handleToggle}
         className="flex items-center justify-between relative w-full"
