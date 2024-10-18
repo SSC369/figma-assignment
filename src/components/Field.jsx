@@ -3,7 +3,7 @@ import React from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { v4 } from "uuid";
 
-import { FIELD_TYPES } from "../constants";
+import { FIELD_DATE_FORMAT, FIELD_TYPES } from "../constants";
 
 const Field = ({ value, fieldType }) => {
   const renderMultiSelect = (value) => {
@@ -13,8 +13,7 @@ const Field = ({ value, fieldType }) => {
           return (
             <li
               key={v4()}
-              style={{ backgroundColor: "#D1E9FF", color: "#1570EF" }}
-              className="text-xs p-1 px-2 rounded-xl font-medium"
+              className="text-xs p-1 px-2 rounded-xl font-medium bg-sky text-sky"
             >
               {data}
             </li>
@@ -27,7 +26,7 @@ const Field = ({ value, fieldType }) => {
   const renderFieldValue = () => {
     switch (fieldType) {
       case FIELD_TYPES.DATE:
-        return <p>{dayjs(new Date(value)).format("DD MMM YYYY")}</p>;
+        return <p>{dayjs(new Date(value)).format(FIELD_DATE_FORMAT)}</p>;
       case FIELD_TYPES.CHECKBOX_GROUP:
         if (typeof value === "object") {
           const checkboxText = value.join(", ");
@@ -41,7 +40,7 @@ const Field = ({ value, fieldType }) => {
       case FIELD_TYPES.PHONE_NUMBER:
         const { phoneNumber, countryCode } = value;
         return (
-          <div className="text-blue-500 font-semibold flex items-center gap-2">
+          <div className="text-sky font-semibold flex items-center gap-2">
             <FaPhoneAlt />
             <p>
               {countryCode} {phoneNumber}
@@ -49,7 +48,7 @@ const Field = ({ value, fieldType }) => {
           </div>
         );
       case FIELD_TYPES.URL:
-        return <p className="font-medium text-blue-500"></p>;
+        return <p className="font-medium text-sky"></p>;
       default:
         return <p className="font-medium break-words">{value}</p>;
     }

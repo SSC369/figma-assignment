@@ -61,8 +61,9 @@ const LeadDetailsField = ({ gof }) => {
     }
   };
 
-  const handleToggle = () => {
+  const handleToggle = (e) => {
     setShowMore(!showMore);
+    e.stopPropagation();
   };
 
   return (

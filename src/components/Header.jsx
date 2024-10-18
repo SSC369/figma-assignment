@@ -12,18 +12,15 @@ import { UserContext } from "../context/userContext";
 import { HEADER_OPTIONS } from "../constants";
 import { success } from "../utils/toastUtils";
 import HeaderOption from "./HeaderOption";
+import { getLogo } from "../utils/leadUtils";
 
 const Header = () => {
   const { headerData, fetchData } = useContext(UserContext);
   const { name, leadId, stage } = headerData;
 
-  let logo = "";
-  const splitName = name.split(" ");
-  splitName.forEach((word) => {
-    logo += word[0];
-  });
-
+  const logo = getLogo(name);
   const stageColor = stage.color;
+  const options = Object.keys(HEADER_OPTIONS);
 
   const handleRefresh = () => {
     fetchData();
@@ -33,7 +30,8 @@ const Header = () => {
     return (
       <ul className="flex items-center justify-between mt-2 gap-3">
         {options.map((option) => {
-          return <HeaderOption key={v4()} option={option} />;
+          const optionData = HEADER_OPTIONS[option];
+          return <HeaderOption key={v4()} option={optionData} />;
         })}
       </ul>
     );
@@ -42,10 +40,7 @@ const Header = () => {
   const renderProfile = () => {
     return (
       <div className="flex items-center gap-3">
-        <div
-          className="rounded-full p-2 font-semibold"
-          style={{ backgroundColor: "#D1E9FF", color: "#1570EF" }}
-        >
+        <div className="rounded-full p-2 font-semibold bg-sky text-sky">
           {logo}
         </div>
         <h1 className="font-semibold text-xl">{name}</h1>
@@ -89,7 +84,6 @@ const Header = () => {
     );
   };
 
-  const options = Object.keys(HEADER_OPTIONS);
   return (
     <header className="fixed w-full bg-white z-50 px-20 py-4 border-b-[1px]">
       {renderHeader()}
@@ -99,7 +93,7 @@ const Header = () => {
         <div className="flex flex-col">
           <button
             onClick={handleClickCopyLink}
-            className="text-blue-600 flex items-center gap-2 self-end"
+            className="text-sky flex items-center gap-2 self-end"
           >
             <RxLink2 className="text-xl" />
             <p className="font-semibold text-sm">Copy Link</p>

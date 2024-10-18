@@ -11,7 +11,7 @@ const ToggleSwitch = () => {
     <div
       onClick={handleToggle}
       className={` w-[44px] p-1 rounded-3xl transition-all cursor-pointer duration-300 ease-in-out ${
-        isChecked ? "bg-blue-500" : "bg-slate-200"
+        isChecked ? "bg-blue-400" : "bg-slate-200"
       }`}
     >
       <div

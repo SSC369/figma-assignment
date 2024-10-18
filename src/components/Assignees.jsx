@@ -60,7 +60,7 @@ const Assignees = () => {
           onClick={handleClickSeeMore}
           className="flex items-center gap-1 text-xs self-center"
         >
-          <p className="text-blue-500 font-semibold">See more</p>
+          <p className="text-sky font-semibold">See more</p>
           <FaChevronDown />
         </button>
       );
@@ -74,7 +74,7 @@ const Assignees = () => {
           onClick={handleClickSeeLess}
           className="flex items-center gap-1 text-xs self-center"
         >
-          <p className="text-blue-500 font-semibold">See Less</p>
+          <p className="text-sky font-semibold">See Less</p>
           <FaChevronUp />
         </button>
       );
@@ -91,10 +91,10 @@ const Assignees = () => {
         <h1 className="text-sm font-medium">Assignees</h1>
         <button
           onClick={handleAssigneesEdit}
-          className="flex items-center gap-2"
+          className="flex items-center gap-1 text-sky"
         >
-          <MdOutlineEdit color="#1570EF" />
-          <p className="text-xs text-blue-600 font-medium">Edit</p>
+          <MdOutlineEdit />
+          <p className="text-xs font-medium">Edit</p>
         </button>
       </div>
     );

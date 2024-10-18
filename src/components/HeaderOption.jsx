@@ -10,11 +10,11 @@ const HeaderOption = ({ option }) => {
   const renderIcon = (option) => {
     switch (option) {
       case HEADER_OPTIONS.call:
-        return <IoIosCall className="text-xl" color="#1570EF" />;
+        return <IoIosCall className="text-xl" color={option.color} />;
       case HEADER_OPTIONS.remarks:
-        return <FaRegFileLines className="text-lg" color="#1570EF" />;
+        return <FaRegFileLines className="text-lg" color={option.color} />;
       case HEADER_OPTIONS.send:
-        return <IoIosSend className="text-xl" color="#1570EF" />;
+        return <IoIosSend className="text-xl" color={option.color} />;
       case HEADER_OPTIONS.whatsapp:
         return <img className="h-4" src={whatsappIcon} />;
       default:
@@ -29,23 +29,15 @@ const HeaderOption = ({ option }) => {
   return (
     <li
       onClick={handleClick}
-      style={
-        option === HEADER_OPTIONS.whatsapp
-          ? { backgroundColor: "#ECFDF3" }
-          : { backgroundColor: "#EFF8FF" }
-      }
+      style={{ backgroundColor: option.bgColor }}
       className="flex items-center gap-2 p-2 px-4 rounded-xl"
     >
       {renderIcon(option)}
       <p
-        style={
-          option === HEADER_OPTIONS.whatsapp
-            ? { color: "#039855" }
-            : { color: "#1570EF" }
-        }
+        style={{ color: option.color }}
         className="first-letter:capitalize font-medium text-sm"
       >
-        {option}
+        {option.name}
       </p>
     </li>
   );

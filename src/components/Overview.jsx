@@ -52,7 +52,7 @@ const Overview = () => {
           onClick={handleClickSeeMore}
           className="flex items-center gap-1 text-xs self-center"
         >
-          <p className="text-blue-500 font-semibold">See more</p>
+          <p className="text-sky font-semibold">See more</p>
           <FaChevronDown />
         </button>
       );
@@ -66,7 +66,7 @@ const Overview = () => {
           onClick={handleClickSeeLess}
           className="flex items-center gap-1 text-xs self-center"
         >
-          <p className="text-blue-500 font-semibold">See Less</p>
+          <p className="text-sky font-semibold">See Less</p>
           <FaChevronUp />
         </button>
       );

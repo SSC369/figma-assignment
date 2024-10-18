@@ -1,8 +1,8 @@
 const HEADER_OPTIONS = {
-  call: "call",
-  whatsapp: "whatsapp",
-  remarks: "remarks",
-  send: "send",
+  call: { name: "call", bgColor: "#EFF8FF", color: "#1570EF" },
+  whatsapp: { name: "whatsapp", bgColor: "#ECFDF3", color: "#039855" },
+  remarks: { name: "remarks", bgColor: "#EFF8FF", color: "#1570EF" },
+  send: { name: "send", bgColor: "#EFF8FF", color: "#1570EF" },
 };
 
 const ASSIGNEES_SHOW_LIMIT = 3;
@@ -25,7 +25,7 @@ const FIELD_TYPES = {
   URL: "URL",
 };
 const DATE_FORMAT = "DD MMM YYYY, HH:MM A";
-
+const FIELD_DATE_FORMAT = "DD MMM YYYY";
 export {
   HEADER_OPTIONS,
   ASSIGNEES_SHOW_LIMIT,
@@ -33,4 +33,5 @@ export {
   LEAD_TABS,
   FIELD_TYPES,
   DATE_FORMAT,
+  FIELD_DATE_FORMAT,
 };

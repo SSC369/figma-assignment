@@ -6,6 +6,12 @@ export default {
       minHeight: {
         dh: "calc(100dvh - 130px)",
       },
+      colors: {
+        sky: "#1570EF",
+      },
+      backgroundColor: {
+        sky: "#D1E9FF",
+      },
     },
   },
   plugins: [],
