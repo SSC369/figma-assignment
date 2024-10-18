@@ -21,8 +21,8 @@ const Overview = () => {
   const renderOverviewFields = () => {
     return (
       <ul className="flex flex-col gap-2 ">
-        {overviewLimitData.map((field, index) => {
-          const { fieldId, name, value, fieldType } = field;
+        {overviewLimitData.map((field) => {
+          const { name, value, fieldType } = field;
           return (
             <li
               className="flex items-center text-xs border-b-[1px] last:border-none text-slate-800 py-2"

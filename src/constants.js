@@ -24,6 +24,7 @@ const FIELD_TYPES = {
   LONG_TEXT: "LONG_TEXT",
   URL: "URL",
 };
+const DATE_FORMAT = "DD MMM YYYY, HH:MM A";
 
 export {
   HEADER_OPTIONS,
@@ -31,4 +32,5 @@ export {
   OVERVIEW_SHOW_LIMIT,
   LEAD_TABS,
   FIELD_TYPES,
+  DATE_FORMAT,
 };
