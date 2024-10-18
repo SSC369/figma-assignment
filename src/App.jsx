@@ -1,15 +1,15 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { TbPinned } from "react-icons/tb";
-import { FiUser } from "react-icons/fi";
+import dayjs from "dayjs";
+import { Toaster } from "react-hot-toast";
 
 import { UserContextProvider } from "./context/userContext";
 import Header from "./components/Header";
 import Assignees from "./components/Assignees";
 import Overview from "./components/Overview";
 import ToggleButton from "./components/ToggleButton";
-import dayjs from "dayjs";
 import LeadTabs from "./components/LeadTabs";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LeadDetails from "./pages/LeadDetails";
 import { LEAD_TABS } from "./constants";
 import Activities from "./pages/Activities";
@@ -50,6 +50,7 @@ const App = () => {
               <Route path={LEAD_TABS["history-log"]} element={<HistoryLog />} />
             </Routes>
           </section>
+          <Toaster position="top-center" reverseOrder={true} />
         </main>
       </UserContextProvider>
     </BrowserRouter>

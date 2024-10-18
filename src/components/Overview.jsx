@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
+import { v4 } from "uuid";
+import { FaChevronDown, FaChevronUp } from "../Icons";
+
 import { OVERVIEW_SHOW_LIMIT } from "../constants";
 import { UserContext } from "../context/userContext";
-import { v4 } from "uuid";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import Field from "./Field";
 
 const Overview = () => {

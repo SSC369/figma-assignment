@@ -26,12 +26,12 @@ const LeadDetailsField = ({ gof }) => {
         {gof.fields.length === 0 ? (
           <p className="">-</p>
         ) : (
-          <ul className="flex gap-10 flex-wrap">
+          <ul className="flex gap-10 flex-wrap ">
             {gof.fields.map((field) => {
               const { name, value, fieldType, fieldId } = field;
               return (
                 <li
-                  className="text-sm flex flex-col gap-2 min-w-[200px] h-fit border-r-[1px] pr-6"
+                  className="text-sm flex flex-col gap-2 min-w-[200px] h-fit border-r-[1px] last:border-0 pr-6"
                   key={fieldId}
                 >
                   <p className="text-slate-600 text-xs">{name}</p>
@@ -45,20 +45,28 @@ const LeadDetailsField = ({ gof }) => {
     );
   };
 
+  const renderShowButton = () => {
+    if (showMore) {
+      return (
+        <button onClick={handleHide}>
+          <FaChevronUp />
+        </button>
+      );
+    } else {
+      return (
+        <button onClick={handleShow}>
+          <FaChevronDown />
+        </button>
+      );
+    }
+  };
+
   return (
     <div className="mt-4 flex flex-col justify-between bg-white py-4 pr-4 rounded-xl">
       <div className="flex items-center justify-between relative w-full">
         <div className="h-6 w-[3px] rounded-r-lg bg-blue-600 absolute left-0"></div>
         <h1 className="text-slate-800 text-sm font-medium ml-4">{name}</h1>
-        {showMore ? (
-          <button onClick={handleHide}>
-            <FaChevronUp />
-          </button>
-        ) : (
-          <button onClick={handleShow}>
-            <FaChevronDown />
-          </button>
-        )}
+        {renderShowButton()}
       </div>
 
       {renderGofs(gof)}

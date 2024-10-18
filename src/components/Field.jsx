@@ -3,6 +3,8 @@ import React from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { v4 } from "uuid";
 
+import { FIELD_TYPES } from "../constants";
+
 const Field = ({ value, fieldType }) => {
   const renderMultiSelect = (value) => {
     return (
@@ -39,9 +41,9 @@ const Field = ({ value, fieldType }) => {
 
   const renderFieldValue = () => {
     switch (fieldType) {
-      case "DATE":
+      case FIELD_TYPES.DATE:
         return <p>{dayjs(new Date(value)).format("DD MMM YYYY")}</p>;
-      case "CHECKBOX_GROUP":
+      case FIELD_TYPES.CHECKBOX_GROUP:
         if (typeof value === "object") {
           return renderCheckboxGroup(value);
         }
@@ -50,12 +52,11 @@ const Field = ({ value, fieldType }) => {
             <input defaultChecked={value} type="checkbox" />
           </div>
         );
-
-      case "MULTI_SELECT":
+      case FIELD_TYPES.MULTI_SELECT:
         return renderMultiSelect(value);
-      case "LONG_TEXT":
+      case FIELD_TYPES.LONG_TEXT:
         return <p className=" max-w-[200px] text-wrap">{value}</p>;
-      case "PHONE_NUMBER":
+      case FIELD_TYPES.PHONE_NUMBER:
         const { phoneNumber, countryCode } = value;
         return (
           <div className="text-blue-500 font-semibold flex items-center gap-2">
@@ -65,7 +66,7 @@ const Field = ({ value, fieldType }) => {
             </p>
           </div>
         );
-      case "URL":
+      case FIELD_TYPES.URL:
         return <p className="font-medium text-blue-500"></p>;
       default:
         return <p className="font-medium break-words">{value}</p>;

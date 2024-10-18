@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { MdOutlineEdit } from "react-icons/md";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
+import { v4 } from "uuid";
 
 import { UserContext } from "../context/userContext";
-import { v4 } from "uuid";
 import { ASSIGNEES_SHOW_LIMIT } from "../constants";
+import { success } from "../utils/toastUtils";
 
 const Assignees = () => {
   const { assignees } = useContext(UserContext);
@@ -18,23 +19,27 @@ const Assignees = () => {
     assigneesLimitData = assignees;
   }
 
+  const renderAssignee = (id, name) => {
+    return (
+      <li
+        className="flex items-center text-xs border-b-[1px] last:border-none py-2"
+        key={v4()}
+      >
+        <p className="flex-grow font-medium text-slate-600">{id}</p>
+        <p className="font-medium text-slate-800">{name}</p>
+        <div className="bg-slate-100 w-fit p-1 rounded-full ml-2">
+          <FiUser className="text-xl" />
+        </div>
+      </li>
+    );
+  };
+
   const renderAssignees = () => {
     return (
       <ul className="flex flex-col gap-2 ">
         {assigneesLimitData.map((a, index) => {
           const { id, name, profilePic } = a;
-          return (
-            <li
-              className="flex items-center text-xs border-b-[1px] last:border-none py-2"
-              key={v4()}
-            >
-              <p className="flex-grow font-medium text-slate-600">{id}</p>
-              <p className="font-medium text-slate-800">{name}</p>
-              <div className="bg-slate-100 w-fit p-1 rounded-full ml-2">
-                <FiUser className="text-xl" />
-              </div>
-            </li>
-          );
+          return renderAssignee(id, name);
         })}
       </ul>
     );
@@ -76,11 +81,18 @@ const Assignees = () => {
     }
   };
 
+  const handleAssigneesEdit = () => {
+    success("Yet to be added");
+  };
+
   const renderAssigneesHeader = () => {
     return (
       <div className="flex  items-center justify-between text-slate-600">
         <h1 className="text-sm font-medium">Assignees</h1>
-        <button className="flex items-center gap-2">
+        <button
+          onClick={handleAssigneesEdit}
+          className="flex items-center gap-2"
+        >
           <MdOutlineEdit color="#1570EF" />
           <p className="text-xs text-blue-600 font-medium">Edit</p>
         </button>
