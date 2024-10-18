@@ -24,34 +24,16 @@ const Field = ({ value, fieldType }) => {
     );
   };
 
-  const renderCheckboxGroup = (checkboxes) => {
-    return (
-      <ul className="flex flex-wrap gap-2 items-center max-w-[300px]">
-        {checkboxes.map((value) => {
-          return (
-            <li key={v4()} className="flex items-center gap-2 font-medium">
-              <p>{value}</p>
-              <input type="checkbox" />
-            </li>
-          );
-        })}
-      </ul>
-    );
-  };
-
   const renderFieldValue = () => {
     switch (fieldType) {
       case FIELD_TYPES.DATE:
         return <p>{dayjs(new Date(value)).format("DD MMM YYYY")}</p>;
       case FIELD_TYPES.CHECKBOX_GROUP:
         if (typeof value === "object") {
-          return renderCheckboxGroup(value);
+          const checkboxText = value.join(", ");
+          return <p className="font-medium break-words">{checkboxText}</p>;
         }
-        return (
-          <div>
-            <input defaultChecked={value} type="checkbox" />
-          </div>
-        );
+        return <p className="font-medium">True</p>;
       case FIELD_TYPES.MULTI_SELECT:
         return renderMultiSelect(value);
       case FIELD_TYPES.LONG_TEXT:

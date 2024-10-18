@@ -61,9 +61,16 @@ const LeadDetailsField = ({ gof }) => {
     }
   };
 
+  const handleToggle = () => {
+    setShowMore(!showMore);
+  };
+
   return (
     <div className="mt-4 flex flex-col justify-between bg-white py-4 pr-4 rounded-xl">
-      <div className="flex items-center justify-between relative w-full">
+      <div
+        onClick={handleToggle}
+        className="flex items-center justify-between relative w-full"
+      >
         <div className="h-6 w-[3px] rounded-r-lg bg-blue-600 absolute left-0"></div>
         <h1 className="text-slate-800 text-sm font-medium ml-4">{name}</h1>
         {renderShowButton()}
