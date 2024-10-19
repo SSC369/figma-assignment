@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 
 import { UserContext } from "../context/userContext";
 import LeadDetailsField from "../components/LeadDetailsField";
+import { v4 } from "uuid";
 
 const LeadDetails = () => {
   const { userData } = useContext(UserContext);
@@ -10,9 +11,9 @@ const LeadDetails = () => {
   const renderGofs = () => {
     return (
       <ul className="">
-        {gofs.map((gof) => {
+        {gofs?.map((gof) => {
           const { id } = gof;
-          return <LeadDetailsField key={id} gof={gof} />;
+          return <LeadDetailsField key={v4()} gof={gof} />;
         })}
       </ul>
     );

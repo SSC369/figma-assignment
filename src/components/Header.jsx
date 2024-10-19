@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FiRefreshCw,
   FaChevronDown,
@@ -6,6 +7,7 @@ import {
   IoClose,
   RxLink2,
 } from "../Icons";
+import { LuMoveLeft } from "react-icons/lu";
 import { v4 } from "uuid";
 
 import { UserContext } from "../context/userContext";
@@ -16,8 +18,9 @@ import { getLogo } from "../utils/leadUtils";
 
 const Header = () => {
   const { headerData, fetchData } = useContext(UserContext);
-  const { name, leadId, stage } = headerData;
+  const navigate = useNavigate();
 
+  const { name, leadId, stage } = headerData;
   const logo = getLogo(name);
   const options = Object.keys(HEADER_OPTIONS);
 
@@ -88,6 +91,10 @@ const Header = () => {
     );
   };
 
+  const handleNavigateBack = () => {
+    navigate("/users");
+  };
+
   return (
     <header className="fixed w-full bg-white z-50 px-40 py-6 border-b-[1px]">
       {renderHeader()}
@@ -105,6 +112,14 @@ const Header = () => {
           {renderHeaderOptions()}
         </div>
       </div>
+
+      <button
+        onClick={handleNavigateBack}
+        className="absolute left-6 top-4 flex gap-2 items-center text-sky"
+      >
+        <LuMoveLeft className="text-lg" />
+        <p className="text-xs font-medium">Go Back</p>
+      </button>
     </header>
   );
 };

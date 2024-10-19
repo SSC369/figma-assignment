@@ -22,10 +22,12 @@ const Overview = () => {
     const { name, value, fieldType } = field;
     return (
       <li
-        className="flex items-center text-sm border-b-[1px] last:border-none text-slate-800 pb-4"
+        className="flex items-center border-b-[1px] last:border-none text-slate-800 pb-4"
         key={v4()}
       >
-        <p className="flex-grow  text-slate-600 min-w-[100px]">{name}</p>
+        <p className="flex-grow  text-slate-600  min-w-[100px] text-sm">
+          {name}
+        </p>
         <Field value={value} fieldType={fieldType} />
       </li>
     );
@@ -57,6 +59,9 @@ const Overview = () => {
   };
 
   const renderSeeMoreButton = () => {
+    if (overviewFields.length === OVERVIEW_SHOW_LIMIT) {
+      return <></>;
+    }
     if (overviewShowLimit <= overviewFields.length) {
       return (
         <button

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { MdOutlineEdit } from "react-icons/md";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 import { FiUser } from "react-icons/fi";
 import { v4 } from "uuid";
 
@@ -9,8 +9,9 @@ import { ASSIGNEES_SHOW_LIMIT } from "../constants";
 import { showSuccessToast } from "../utils/toastUtils";
 
 const Assignees = () => {
-  const { assignees } = useContext(UserContext);
+  const { userData } = useContext(UserContext);
   const [showLimit, setShowLimit] = useState(ASSIGNEES_SHOW_LIMIT);
+  const assignees = userData?.assignees;
 
   let assigneesLimitData;
   if (assignees.length > showLimit) {
@@ -61,6 +62,9 @@ const Assignees = () => {
   };
 
   const renderSeeMoreButton = () => {
+    if (assignees.length === ASSIGNEES_SHOW_LIMIT) {
+      return <></>;
+    }
     if (showLimit < assignees.length) {
       return (
         <button

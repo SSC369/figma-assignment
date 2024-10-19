@@ -69,7 +69,14 @@ export default {
     {
       fieldId: "OF009",
       name: "Products of Interest",
-      value: ["CRM", "Marketing Automation", "Analytics"],
+      value: [
+        "CRM",
+        "Marketing Automation",
+        "Analytics",
+        "CRM",
+        "Marketing Automation",
+        "Analytics",
+      ],
       fieldType: "MULTI_SELECT",
     },
     {

@@ -15,7 +15,7 @@ const LeadDetailsField = ({ gof }) => {
     return (
       <ul className="flex gap-6 flex-wrap">
         {gof.fields.map((field) => {
-          const { name, value, fieldType, fieldId } = field;
+          const { name, value, fieldType } = field;
           return (
             <Gof name={name} value={value} key={v4()} fieldType={fieldType} />
           );
@@ -43,7 +43,7 @@ const LeadDetailsField = ({ gof }) => {
       <button>
         <FaChevronDown
           className={`transition-transform duration-300 ease-in-out text-slate-500 ${
-            !showMore ? "rotate-180" : "rotate-0"
+            showMore ? "rotate-180" : "rotate-0"
           }`}
         />
       </button>
@@ -56,7 +56,7 @@ const LeadDetailsField = ({ gof }) => {
   };
 
   return (
-    <div className="mt-4 flex flex-col  justify-between bg-white py-4 pr-4 rounded-2xl  mr-4">
+    <div className="mt-4 flex flex-col  justify-between bg-white py-4 pr-4 rounded-2xl hover:bg-slate-50 mr-4">
       <div
         onClick={handleToggle}
         className="flex items-center justify-between relative w-full"

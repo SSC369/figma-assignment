@@ -1,7 +1,8 @@
 import { createContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import Loader from "../components/Loader";
-import data from "../data";
+import data from "../userData";
 import { LEAD_TABS } from "../constants";
 
 export const UserContext = createContext();
@@ -11,16 +12,21 @@ export const UserContextProvider = ({ children }) => {
   const [activeTab, setActiveTab] = useState(LEAD_TABS["lead-details"]);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { leadId } = useParams();
 
-  const fetchData = () => {
+  useEffect(() => {
+    if (leadId) {
+      fetchData();
+    }
+  }, [leadId]);
+
+  const fetchData = async () => {
     setIsLoading(true);
-    setTimeout(() => {
-      setUserData(data);
-      setIsLoading(false);
-    }, 1000);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const leadData = data.find((lead) => lead.leadId === leadId);
+
+    setUserData(leadData);
+    setIsLoading(false);
   };
 
   if (isLoading) {
@@ -32,17 +38,13 @@ export const UserContextProvider = ({ children }) => {
   }
 
   if (!isLoading && userData) {
-    const { leadId, name, stage, assignees, overviewFields } = userData;
-    const headerData = {
-      leadId,
-      name,
-      stage,
-    };
+    const { leadId, name, stage, overviewFields } = userData;
+    const headerData = { leadId, name, stage };
+
     return (
       <UserContext.Provider
         value={{
           headerData,
-          assignees,
           overviewFields,
           activeTab,
           setActiveTab,
@@ -55,9 +57,5 @@ export const UserContextProvider = ({ children }) => {
     );
   }
 
-  return (
-    <div>
-      <h1>Something Went Wrong !!!</h1>
-    </div>
-  );
+  return null;
 };

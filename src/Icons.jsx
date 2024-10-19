@@ -9,6 +9,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { FaRegFileLines } from "react-icons/fa6";
 import { FiRefreshCw } from "react-icons/fi";
 import { RxLink2 } from "react-icons/rx";
+import { GoDotFill } from "react-icons/go";
 
 export {
   BsActivity,
@@ -26,4 +27,5 @@ export {
   RxLink2,
   FaRocket,
   IoClose,
+  GoDotFill,
 };

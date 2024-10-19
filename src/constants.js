@@ -19,7 +19,7 @@ const LEAD_TABS = {
 };
 
 const LEAD_TABS_NAVIGATE = {
-  "lead-details": "/",
+  "lead-details": "",
   activities: "activities",
   remarks: "remarks",
   documents: "documents",
@@ -34,9 +34,15 @@ const FIELD_TYPES = {
   PHONE_NUMBER: "PHONE_NUMBER",
   LONG_TEXT: "LONG_TEXT",
   URL: "URL",
+  STATUS: "STATUS",
 };
 const DATE_FORMAT = "DD MMM YYYY, HH:MM A";
 const FIELD_DATE_FORMAT = "DD MMM YYYY";
+const MULTI_SELECT_LIMIT = 2;
+
+const LEAD_VIEW_PAGE_PATH = "/lead-view";
+const USERS_PAGE_PATH = "/users";
+
 export {
   HEADER_OPTIONS,
   ASSIGNEES_SHOW_LIMIT,
@@ -47,4 +53,7 @@ export {
   FIELD_DATE_FORMAT,
   HOME_ROUTE,
   LEAD_TABS_NAVIGATE,
+  MULTI_SELECT_LIMIT,
+  LEAD_VIEW_PAGE_PATH,
+  USERS_PAGE_PATH,
 };
