@@ -1,9 +1,9 @@
 import React from "react";
 
-const Loader = () => (
+const Loader = ({ height = 30, width = 30 }) => (
   <svg
-    width="30"
-    height="30"
+    width={width}
+    height={height}
     viewBox="0 0 100 100"
     xmlns="http://www.w3.org/2000/svg"
   >

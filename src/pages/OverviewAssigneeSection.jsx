@@ -30,7 +30,7 @@ const OverviewAssigneeSection = () => {
   };
 
   return (
-    <section className="border-r-[1px] p-6 flex flex-col gap-4 max-h-[84dvh] w-[408px] overflow-auto custom-scrollbar">
+    <section className="border-r-[1px] p-6 flex flex-col gap-4 max-h-[84dvh] w-1/3  overflow-auto custom-scrollbar">
       {renderPin()}
       {renderCreatedOn()}
       <Assignees />

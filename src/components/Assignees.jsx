@@ -6,7 +6,7 @@ import { v4 } from "uuid";
 
 import { UserContext } from "../context/userContext";
 import { ASSIGNEES_SHOW_LIMIT } from "../constants";
-import { success } from "../utils/toastUtils";
+import { showSuccessToast } from "../utils/toastUtils";
 
 const Assignees = () => {
   const { assignees } = useContext(UserContext);
@@ -36,8 +36,8 @@ const Assignees = () => {
 
   const renderAssignees = () => {
     return (
-      <ul className="flex flex-col gap-2 ">
-        {assigneesLimitData.map((a, index) => {
+      <ul className="flex flex-col gap-2">
+        {assigneesLimitData.map((a) => {
           const { id, name } = a;
           return renderAssignee(id, name);
         })}
@@ -46,11 +46,18 @@ const Assignees = () => {
   };
 
   const handleClickSeeMore = () => {
-    setShowLimit(assignees.length);
+    if (showLimit === assignees.length) {
+      setShowLimit(ASSIGNEES_SHOW_LIMIT);
+    } else {
+      setShowLimit(assignees.length);
+    }
   };
 
-  const handleClickSeeLess = () => {
-    setShowLimit(ASSIGNEES_SHOW_LIMIT);
+  const renderSeeMoreButtonText = () => {
+    if (showLimit < assignees.length) {
+      return "See More";
+    }
+    return "See Less";
   };
 
   const renderSeeMoreButton = () => {
@@ -60,29 +67,19 @@ const Assignees = () => {
           onClick={handleClickSeeMore}
           className="flex items-center gap-1 text-xs self-center"
         >
-          <p className="text-sky font-semibold">See more</p>
-          <FaChevronDown />
-        </button>
-      );
-    }
-  };
-
-  const renderSeeLessButton = () => {
-    if (showLimit == assignees.length) {
-      return (
-        <button
-          onClick={handleClickSeeLess}
-          className="flex items-center gap-1 text-xs self-center"
-        >
-          <p className="text-sky font-semibold">See Less</p>
-          <FaChevronUp />
+          <p className="text-sky font-semibold">{renderSeeMoreButtonText()}</p>
+          <FaChevronDown
+            className={`transition-transform duration-300 ease-in-out ${
+              showLimit < assignees.length ? "rotate-0" : "rotate-180"
+            }`}
+          />
         </button>
       );
     }
   };
 
   const handleAssigneesEdit = () => {
-    success("Yet to be added");
+    showSuccessToast("Yet to be added");
   };
 
   const renderAssigneesHeader = () => {
@@ -101,11 +98,10 @@ const Assignees = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 bg-white p-4 rounded-2xl text-slate-600">
+    <div className="flex flex-col gap-4 bg-white p-4 rounded-2xl text-slate-600 transition-all duration-300 ease-in-out">
       {renderAssigneesHeader()}
       {renderAssignees()}
       {renderSeeMoreButton()}
-      {renderSeeLessButton()}
     </div>
   );
 };

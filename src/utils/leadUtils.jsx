@@ -1,11 +1,12 @@
 const getLogo = (name) => {
-  let logo = "";
+  if (!name) {
+    return;
+  }
   const splitName = name.split(" ");
-  splitName.forEach((word) => {
-    logo += word[0];
-  });
-
-  return logo;
+  if (splitName.length >= 2) {
+    return splitName[0][0] + splitName[1][0];
+  }
+  return name[0];
 };
 
 const getTab = (data) => {

@@ -1,11 +1,11 @@
 import toast from "react-hot-toast";
 
-const success = (text) => {
+const showSuccessToast = (text) => {
   toast.success(text, { duration: 1000, icon: "ⓘ" });
 };
 
-const failure = (text) => {
+const showFailureToast = (text) => {
   toast.error(text, { duration: 1000 });
 };
 
-export { success, failure };
+export { showSuccessToast, showFailureToast };

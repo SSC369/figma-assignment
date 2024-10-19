@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "../Icons";
+import { FaChevronDown } from "../Icons";
 
 import Gof from "./Gof";
 import { v4 } from "uuid";
@@ -8,19 +8,10 @@ const LeadDetailsField = ({ gof }) => {
   const [showMore, setShowMore] = useState(false);
   const { name } = gof;
 
-  const handleShow = () => {
-    setShowMore(true);
-  };
-
-  const handleHide = () => {
-    setShowMore(false);
-  };
-
   const renderGof = (gof) => {
     if (gof.fields.length === 0) {
       return <p className="">-</p>;
     }
-
     return (
       <ul className="flex gap-6 flex-wrap">
         {gof.fields.map((field) => {
@@ -48,16 +39,13 @@ const LeadDetailsField = ({ gof }) => {
   };
 
   const renderShowButton = () => {
-    if (showMore) {
-      return (
-        <button onClick={handleHide}>
-          <FaChevronUp />
-        </button>
-      );
-    }
     return (
-      <button onClick={handleShow}>
-        <FaChevronDown />
+      <button>
+        <FaChevronDown
+          className={`transition-transform duration-300 ease-in-out text-slate-500 ${
+            !showMore ? "rotate-180" : "rotate-0"
+          }`}
+        />
       </button>
     );
   };
@@ -68,7 +56,7 @@ const LeadDetailsField = ({ gof }) => {
   };
 
   return (
-    <div className="mt-4 flex flex-col justify-between bg-white py-4 pr-4 rounded-2xl min-h-[54px] mr-4">
+    <div className="mt-4 flex flex-col  justify-between bg-white py-4 pr-4 rounded-2xl  mr-4">
       <div
         onClick={handleToggle}
         className="flex items-center justify-between relative w-full"

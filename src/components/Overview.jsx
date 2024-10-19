@@ -18,56 +18,59 @@ const Overview = () => {
     overviewLimitData = overviewFields;
   }
 
+  const renderOverviewField = (field) => {
+    const { name, value, fieldType } = field;
+    return (
+      <li
+        className="flex items-center text-sm border-b-[1px] last:border-none text-slate-800 pb-4"
+        key={v4()}
+      >
+        <p className="flex-grow  text-slate-600 min-w-[100px]">{name}</p>
+        <Field value={value} fieldType={fieldType} />
+      </li>
+    );
+  };
+
   const renderOverviewFields = () => {
     return (
       <ul className="flex flex-col gap-4 ">
         {overviewLimitData.map((field) => {
-          const { name, value, fieldType } = field;
-          return (
-            <li
-              className="flex items-center text-sm border-b-[1px] last:border-none text-slate-800 pb-4"
-              key={v4()}
-            >
-              <p className="flex-grow  text-slate-600 min-w-[100px]">{name}</p>
-              <Field value={value} fieldType={fieldType} />
-            </li>
-          );
+          return renderOverviewField(field);
         })}
       </ul>
     );
   };
 
   const handleClickSeeMore = () => {
-    setOverViewShowLimit(overviewFields.length);
-  };
-
-  const handleClickSeeLess = () => {
-    setOverViewShowLimit(OVERVIEW_SHOW_LIMIT);
-  };
-
-  const renderSeeMoreButton = () => {
-    if (overviewShowLimit < overviewFields.length) {
-      return (
-        <button
-          onClick={handleClickSeeMore}
-          className="flex items-center gap-1 mt-4 text-xs self-center"
-        >
-          <p className="text-sky font-semibold">See more</p>
-          <FaChevronDown />
-        </button>
-      );
+    if (overviewShowLimit === overviewFields.length) {
+      setOverViewShowLimit(OVERVIEW_SHOW_LIMIT);
+    } else {
+      setOverViewShowLimit(overviewFields.length);
     }
   };
 
-  const renderSeeLessButton = () => {
-    if (overviewShowLimit == overviewFields.length) {
+  const renderSeeMoreButtonText = () => {
+    if (overviewShowLimit < overviewFields.length) {
+      return "See More";
+    }
+    return "See Less";
+  };
+
+  const renderSeeMoreButton = () => {
+    if (overviewShowLimit <= overviewFields.length) {
       return (
         <button
-          onClick={handleClickSeeLess}
-          className="flex items-center gap-1 mt-4 text-xs self-center"
+          onClick={handleClickSeeMore}
+          className="flex items-center gap-1 text-xs self-center"
         >
-          <p className="text-sky font-semibold">See Less</p>
-          <FaChevronUp />
+          <p className="text-sky font-semibold">{renderSeeMoreButtonText()}</p>
+          <FaChevronDown
+            className={`transition-transform duration-300 ease-in-out ${
+              overviewShowLimit < overviewFields.length
+                ? "rotate-0"
+                : "rotate-180"
+            }`}
+          />
         </button>
       );
     }
@@ -78,7 +81,6 @@ const Overview = () => {
       <h1 className="text-sm font-medium">Overview</h1>
       {renderOverviewFields()}
       {renderSeeMoreButton()}
-      {renderSeeLessButton()}
     </div>
   );
 };

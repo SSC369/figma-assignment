@@ -10,7 +10,7 @@ import { v4 } from "uuid";
 
 import { UserContext } from "../context/userContext";
 import { HEADER_OPTIONS } from "../constants";
-import { success } from "../utils/toastUtils";
+import { showSuccessToast } from "../utils/toastUtils";
 import HeaderOption from "./HeaderOption";
 import { getLogo } from "../utils/leadUtils";
 
@@ -19,7 +19,6 @@ const Header = () => {
   const { name, leadId, stage } = headerData;
 
   const logo = getLogo(name);
-  const stageColor = stage.color;
   const options = Object.keys(HEADER_OPTIONS);
 
   const handleRefresh = () => {
@@ -61,11 +60,11 @@ const Header = () => {
   };
 
   const handleClose = () => {
-    success("Yet to be added");
+    showSuccessToast("Yet to be added");
   };
 
   const handleClickCopyLink = () => {
-    success("Yet to be added");
+    showSuccessToast("Yet to be added");
   };
 
   const renderHeader = () => {

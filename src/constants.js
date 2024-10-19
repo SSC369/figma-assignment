@@ -7,8 +7,19 @@ const HEADER_OPTIONS = {
 
 const ASSIGNEES_SHOW_LIMIT = 3;
 const OVERVIEW_SHOW_LIMIT = 3;
+const HOME_ROUTE = "/";
+
 const LEAD_TABS = {
   "lead-details": "lead-details",
+  activities: "activities",
+  remarks: "remarks",
+  documents: "documents",
+  "call-log": "call-log",
+  "history-log": "history-log",
+};
+
+const LEAD_TABS_NAVIGATE = {
+  "lead-details": "/",
   activities: "activities",
   remarks: "remarks",
   documents: "documents",
@@ -34,4 +45,6 @@ export {
   FIELD_TYPES,
   DATE_FORMAT,
   FIELD_DATE_FORMAT,
+  HOME_ROUTE,
+  LEAD_TABS_NAVIGATE,
 };

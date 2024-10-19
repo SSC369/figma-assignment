@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-
 import {
   BsActivity,
   CgProfile,
@@ -10,15 +9,16 @@ import {
   LuFileEdit,
   TbHistory,
 } from "../Icons";
-import { LEAD_TABS } from "../constants";
+
+import { LEAD_TABS, LEAD_TABS_NAVIGATE } from "../constants";
 import { UserContext } from "../context/userContext";
 import { getTab } from "../utils/leadUtils";
 
 const LeadTabs = () => {
   const { activeTab, setActiveTab } = useContext(UserContext);
-  const leadTabs = Object.keys(LEAD_TABS);
   const navigate = useNavigate();
 
+  const leadTabs = Object.keys(LEAD_TABS);
   const renderTabIcon = (tab) => {
     switch (tab) {
       case LEAD_TABS["lead-details"]:
@@ -81,11 +81,7 @@ const LeadTabs = () => {
   };
 
   const handleTabClick = (tab) => {
-    if (tab === LEAD_TABS["lead-details"]) {
-      navigate("/");
-    } else {
-      navigate(tab);
-    }
+    navigate(LEAD_TABS_NAVIGATE[tab]);
     setActiveTab(tab);
   };
 
@@ -93,7 +89,7 @@ const LeadTabs = () => {
     return (
       <li
         onClick={() => handleTabClick(data)}
-        className={`flex cursor-pointer justify-center items-center gap-2 pb-2 h-[40px] ${
+        className={`flex cursor-pointer justify-center items-center gap-2 pb-2  ${
           activeTab === data && "border-b-2 border-solid border-sky"
         }`}
         key={v4()}

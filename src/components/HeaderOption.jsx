@@ -4,7 +4,7 @@ import { FaRegFileLines } from "react-icons/fa6";
 
 import { HEADER_OPTIONS } from "../constants";
 import whatsappIcon from "../assets/whatsapp.png";
-import { success } from "../utils/toastUtils";
+import { showSuccessToast } from "../utils/toastUtils";
 
 const HeaderOption = ({ option }) => {
   const renderIcon = (option) => {
@@ -23,7 +23,7 @@ const HeaderOption = ({ option }) => {
   };
 
   const handleClick = () => {
-    success("Yet to be added");
+    showSuccessToast("Yet to be added");
   };
 
   return (
