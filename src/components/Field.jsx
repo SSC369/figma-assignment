@@ -65,7 +65,11 @@ const Field = ({ value, fieldType }) => {
     }
   };
 
-  return <div className="text-slate-700 text-xs">{renderFieldValue()}</div>;
+  return (
+    <div className="text-slate-700 text-xs w-1/2 flex justify-end items-center">
+      {renderFieldValue()}
+    </div>
+  );
 };
 
 export default Field;

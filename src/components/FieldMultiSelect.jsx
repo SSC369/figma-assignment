@@ -13,7 +13,7 @@ const FieldMultiSelect = ({ value }) => {
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <>
       <ul className="flex flex-wrap items-center custom-scrollbar pb-2 gap-2 ">
         {multiSelectLimitData.map((data) => {
           return (
@@ -28,7 +28,7 @@ const FieldMultiSelect = ({ value }) => {
       </ul>
 
       {renderCount()}
-    </div>
+    </>
   );
 };
 export default FieldMultiSelect;

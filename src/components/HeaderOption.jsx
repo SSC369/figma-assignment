@@ -1,6 +1,5 @@
 import React from "react";
-import { IoIosCall, IoIosSend } from "react-icons/io";
-import { FaRegFileLines } from "react-icons/fa6";
+import { IoIosCall, IoIosSend, FaRegFileLines } from "../Icons";
 
 import { HEADER_OPTIONS } from "../constants";
 import whatsappIcon from "../assets/whatsapp.png";

@@ -25,9 +25,7 @@ const Overview = () => {
         className="flex items-center border-b-[1px] last:border-none text-slate-800 pb-4"
         key={v4()}
       >
-        <p className="flex-grow  text-slate-600  min-w-[100px] text-sm">
-          {name}
-        </p>
+        <p className="flex-grow  text-slate-600 w-1/2 text-sm">{name}</p>
         <Field value={value} fieldType={fieldType} />
       </li>
     );
